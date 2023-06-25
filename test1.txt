@@ -1,0 +1,42 @@
+#Q1) Database is a collection of tables consisting of rows and columns. 
+#SQL is Structured Query Language . It is used to add data in the form of rows amd columns.
+#NoSQL is Notonly Structured Query Language. It not only allow user to add data in the form of
+#rows amd columns but also allow user to add pictures , audios, videos etc.
+# Q2) A)DDL command refers to data defenition language. It basically allow the user to perform the
+#task related to data definition 
+#1)Create command is used to create a database or table 
+#2)Drop command is used to delete the whole table
+#3)Alter command  is used to change the definitions of existing table. Like to add a new column ,
+#to redefine datatype ,size , to add a new constraints 
+#4)Turncate command is used to delet all the records from the table
+#Q3)B) DML command refers to data manipulation language . By this command user can insert , delete or 
+# update the data in the rows.
+#1)Insert command is used to insert values in the columns.
+#2)Delete command is used to delete any row or rows.
+#3)Update command is used to modify the data inside the rows.
+#Q4)C) DQL command refers to database query language . 
+#1) Select command is used to make queries on the database
+#Q5) Primary Key is a column or group of columns in a table that uniquely identify every row
+#in that table. While Foreign Keys are the columns of the table which refer to the 
+#primary key of another table . It creates realtionship between 2 tables. 
+#Q6) Execute function is used to execute an SQL query 
+#Cursor is a special control structure that facilitates th row by row processing of records.
+
+import mysql.connector
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="abc",
+  password="password"
+)
+mycursor = mydb.cursor()
+mycursor.execute("create table if not exists test2.test3(name  VARCHAR(20) PRIMARY KEY)")
+mycursor.execute("DROP TABLE test2.test3")
+mycursor.execute("INSERT INTO test1.try1(empno , name ,job ,sal, age) VALUES(106 , 'nakash'  ,  'manager' , 20000 , '20')")
+
+mycursor.execute("UPDATE test1.try1 SET comm = comm+100 ")
+mycursor.execute("DELETE FROM test1.try1 WHERE age >= 20")
+mycursor.execute("SELECT * FROM test1.try1")
+
+for x in mycursor:
+  print(x)
+mydb.close()
